@@ -1,6 +1,9 @@
 package com.sevensongoku.helloworld.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Random;
 
 public class StringUtils {
@@ -78,5 +81,26 @@ public class StringUtils {
 
     public static void println(Object o) {
         println(o.toString());
+    }
+
+    public static void println() { println(EMPTY); }
+
+    public static String concat(Object... o) {
+        String[] stringArray = (String[]) Arrays.stream(o)
+                .map(Object::toString)
+                .toArray();
+        return String.join(EMPTY, stringArray);
+    }
+
+    public static String formatDate(Date date, String pattern) {
+        return new SimpleDateFormat(pattern).format(date);
+    }
+
+    public static String formatDate(Date date) {
+        return formatDate(date, "yyyy-MM-dd HH:mm:ss");
+    }
+
+    public static String formatDate2(Date date) {
+        return formatDate(date, "yyyyMMddHHmmss");
     }
 }
