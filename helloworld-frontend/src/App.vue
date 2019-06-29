@@ -5,6 +5,7 @@
     </div>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-input v-model="title"></el-input>
   </div>
 </template>
 
