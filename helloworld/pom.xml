@@ -18,6 +18,7 @@
         <module>helloworld-core</module>
         <module>helloworld-common</module>
         <module>helloworld-test</module>
+        <module>helloworld-thirdpart</module>
     </modules>
 
 
