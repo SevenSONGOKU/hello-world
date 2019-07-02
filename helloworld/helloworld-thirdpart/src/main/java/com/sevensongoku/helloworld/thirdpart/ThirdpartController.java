@@ -78,11 +78,23 @@ public class ThirdpartController {
         return obj.getStr("file_id");
     }
 
-    @PostMapping("/upload-goods")
+    @PostMapping("/insert-data")
     public String uploadGoods(@RequestBody JSONObject params) {
+        Console.log("insert data...");
         Console.log(params.toString());
         String accessToken = JSONUtil.parseObj(getAccessToken()).getStr("access_token");
         String url = StrUtil.format("https://api.weixin.qq.com/tcb/invokecloudfunction?access_token={}&env={}&name=databaseadd", accessToken, ENV);
+        String result = HttpUtil.post(url, params.toString(), 60000);
+        Console.log(result);
+        return result;
+    }
+
+    @PostMapping("/get-list")
+    public String getGoodsList(@RequestBody JSONObject params) {
+        Console.log("get list...");
+        Console.log(params.toString());
+        String accessToken = JSONUtil.parseObj(getAccessToken()).getStr("access_token");
+        String url = StrUtil.format("https://api.weixin.qq.com/tcb/invokecloudfunction?access_token={}&env={}&name=databaseget", accessToken, ENV);
         String result = HttpUtil.post(url, params.toString(), 60000);
         Console.log(result);
         return result;
